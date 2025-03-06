@@ -70,10 +70,10 @@ mfcc = dct(log_spectrum);
 % Ignore first coefficient as mentioned in slides
 mfcc = mfcc(2:K, :);
 
-% Obtain time axis for plotting spectrogram
+% Obtain time axis for plotting MFCC
 t_axis_mfcc = (0:size(mfcc, 2)-1) * N / fs;
 
-% Plotting spectrogram
+% Plotting MFCC
 figure;
 imagesc(t_axis_mfcc, 1:size(mfcc, 1), mfcc);
 axis xy;
