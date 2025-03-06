@@ -17,7 +17,11 @@ m = melfb(K, N, fs);
 % Obtain the indices for the positive frequency coefficients of the fft
 n2 = 1 + floor(N/2);
 
+% Obtain power spectrum/periodogram to plot
+power = abs(fft_output(1:n2, :)).^2 / N;
+
 % Plotting the mel-spaced filterbank responses for test 3
+% Obtain frequency axis in Hz for plots
 freqs = linspace(0, fs/2, n2);
 figure;
 plot(x-axis, m');
@@ -33,8 +37,20 @@ ylabel('Power');
 title('Power Spectrum Before Mel-Wrapping');
 grid on;
 
+% Obtain time axis for plotting periodogram
+t_axis = (0:size(fft_output, 2)-1) * (N / fs);
+
+% Plotting periodogram
+figure;
+imagesc(t_axis, freqs, 10*log10(power_spectrum));
+axis xy;
+colorbar;
+xlabel('Time (s)');
+ylabel('Frequency (Hz)');
+title('Periodogram');
+
 % Obtain mel spectrum
-mel_spectrum = m * abs(fft_output(1:n2)).^2;
+mel_spectrum = m * abs(fft_output(1:n2, :)).^2;
 
 % Plotting first frame's power spectrum after mel-wrapping
 figure;
@@ -53,3 +69,15 @@ mfcc = dct(log_spectrum);
 
 % Ignore first coefficient as mentioned in slides
 mfcc = mfcc(2:K, :);
+
+% Obtain time axis for plotting spectrogram
+t_axis_mfcc = (0:size(mfcc, 2)-1) * N / fs;
+
+% Plotting spectrogram
+figure;
+imagesc(t_axis_mfcc, 1:size(mfcc, 1), mfcc);
+axis xy;
+colorbar;
+xlabel('Time (s)');
+ylabel('MFCC Coefficients');
+title('MFCC Spectrogram');
