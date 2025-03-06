@@ -24,7 +24,7 @@ power = abs(fft_output(1:n2, :)).^2 / N;
 % Obtain frequency axis in Hz for plots
 freqs = linspace(0, fs/2, n2);
 figure;
-plot(x-axis, m');
+plot(freqs, m');
 xlabel('Frequency (Hz)');
 title('Mel-Spaced Filterbank Responses');
 grid on;
