@@ -1,4 +1,4 @@
-function Output = processingpart2(windowed_frames,fs)
+function Output = processingpart2(windowed_frames,fs,K)
 N=size(windowed_frames,1);
 % Code for FFT, MF wrapping, and cepstrum steps
 % FFT and Mel-Frequency Wrapping Blocks
@@ -14,7 +14,6 @@ end
 % Store number of mel-spectrum coefficients
 % I'm starting with 20 as noted in the project presentation from class
 % We can change this if necessary
-K = 20;
 
 % Use melfb to obtain matrix for mel-spaced filterbank
 % fs is a placeholder for the sampling rate you choose

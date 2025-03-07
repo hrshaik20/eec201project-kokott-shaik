@@ -1,17 +1,16 @@
-function MFCCs = MFCC(filename,N,M)
+function MFCCs = MFCC(filename,N,M,K)
     close all
     [x,Fs]=audioread(filename);
     sound(x,Fs)
     plot(x);
     if (size(x,2)==2)
-        xl=x(:,1);
-        xr=x(:,end);
-        xfbl=FrameBlocking(xl,N,M);
-        xfbr=FrameBlocking(xr,N,M);
-        xwl=Window(xfbl);
-        xwr=Window(xfbr);
-        xpl=processingpart2(xwl,Fs);
-        xpr=processingpart2(xwr,Fs);
-        MFCCs=[xpl,xpr];
+        x=(x(:,1)+x(:,end))/2;
     end
+    xfb=FrameBlocking(x,N,M);
+    xw=Window(xfb);
+    xp=processingpart2(xw,Fs,K);
+    MFCCs=xp;
+    figure;
+    imagesc(M/Fs*(1:size(MFCCs,2)),2:1:K,MFCCs)
+    colorbar
 end
