@@ -12,20 +12,20 @@ To get started:
 
 To run the MFCC code on one .wav file:  
 Call the function MFCC(filename, N, M, K, showFigures)  
-*filename is the path to the .wav file  
-*N is the size of the frame  
-*M is the distance between frame starts  
-*K is the number of Mel-frequency bins  
-*showFigures is a binary variable that toggles graphs (so that dozens of figures aren't opened when this is included in ProjectTraining1.m)  
+1. filename is the path to the .wav file  
+2. N is the size of the frame  
+3. M is the distance between frame starts  
+4. K is the number of Mel-frequency bins  
+5. showFigures is a binary variable that toggles graphs (so that dozens of figures aren't opened when this is included in ProjectTraining1.m)  
 The output of the function is a matrix, where each column represents a vector of dimension K-1, whose entries are the MFCC
 
-To run the LBGTraining code on data from one .wav file:
-Call the function LBGTraining(inputs, Iterations, e, E, dim1, dim2, showFigures)
-  inputs is the MFCC matrix obtained by calling MFCC
-  Iterations defines the size of the codebook as 2^Iterations; aka this is the number of loops made
-  e is the small factor by which the codewords are varied during the splitting process
-  E is the maximum change in distortion for which the function will begin the next loop
-  dim1 is the first dimension the vectors are plotted with
-  dim2 is the second dimension the vectors are plotted with
-  showFigures is a binary variable that toggles graphs (so that dozens of figures aren't opened when this is included in ProjectTraining1.m)
+To run the LBGTraining code on data from one .wav file:  
+Call the function LBGTraining(inputs, Iterations, e, E, dim1, dim2, showFigures)  
+1. inputs is the MFCC matrix obtained by calling MFCC
+2. Iterations defines the size of the codebook as 2^Iterations; aka this is the number of loops made
+3. e is the small factor by which the codewords are varied during the splitting process
+4. E is the maximum change in distortion for which the function will begin the next loop
+5. dim1 is the first dimension the vectors are plotted with
+6. dim2 is the second dimension the vectors are plotted with
+7. showFigures is a binary variable that toggles graphs (so that dozens of figures aren't opened when this is included in ProjectTraining1.m)  
 The output of the function is a matrix, where each column represents a vector of dimension K-1. Each of these vectors is one of the codewords for this .wav file
