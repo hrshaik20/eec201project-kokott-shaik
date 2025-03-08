@@ -1,83 +1,66 @@
+function Output = processingpart2(windowed_frames,fs,K,showFigures)
+N=size(windowed_frames,1);
+% Inputs: windowed_frames (matrix, whose columns are each one frame with a
+% window applied to it); fs (the sampling frequency, which determines the
+% frequency displayed on graphs); K (the number of bins for the mel-spaced
+% filterbank); and showFigures (binary variable to toggle figures when
+% using the function in the larger project)
+%
 % Code for FFT, MF wrapping, and cepstrum steps
 % FFT and Mel-Frequency Wrapping Blocks
 % Take FFT of windowed frames
-% windowed_frames is a placeholder for the output of windowing block
-% N is the size of the frame that you choose
-fft_output = fft(windowed_frames, N);
-
-% Store number of mel-spectrum coefficients
-% I'm starting with 20 as noted in the project presentation from class
-% We can change this if necessary
-K = 20;
+% N is defined by the size of the input frames
+for i=1:size(windowed_frames,2)
+    fft_output(:,i) = fft(windowed_frames(:,i), N);
+end
 
 % Use melfb to obtain matrix for mel-spaced filterbank
-% fs is a placeholder for the sampling rate you choose
 m = melfb(K, N, fs);
 
 % Obtain the indices for the positive frequency coefficients of the fft
 n2 = 1 + floor(N/2);
+freqs = linspace(0, fs/2, N);
 
-% Obtain power spectrum/periodogram to plot
-power = abs(fft_output(1:n2, :)).^2 / N;
+if (showFigures)
+    % Plotting the mel-spaced filterbank responses for test 3
+    figure;
+    plot(freqs(1:n2), m');
+    xlabel('Frequency (Hz)');
+    title('Mel-Spaced Filterbank Responses');
+    grid on;
 
-% Plotting the mel-spaced filterbank responses for test 3
-% Obtain frequency axis in Hz for plots
-freqs = linspace(0, fs/2, n2);
-figure;
-plot(freqs, m');
-xlabel('Frequency (Hz)');
-title('Mel-Spaced Filterbank Responses');
-grid on;
-
-% Plotting first frame's power spectrum before mel-wrapping
-figure;
-plot(freqs, abs(fft_output(1:n2, 1)).^2);
-xlabel('Frequency (Hz)');
-ylabel('Power');
-title('Power Spectrum Before Mel-Wrapping');
-grid on;
-
-% Obtain time axis for plotting periodogram
-t_axis = (0:size(fft_output, 2)-1) * (N / fs);
-
-% Plotting periodogram
-figure;
-imagesc(t_axis, freqs, 10*log10(power_spectrum));
-axis xy;
-colorbar;
-xlabel('Time (s)');
-ylabel('Frequency (Hz)');
-title('Periodogram');
-
+    % Plotting first frame's power spectrum before mel-wrapping
+    figure;
+    plot(freqs(1:n2), abs(fft_output(1:n2, 1)).^2);
+    xlabel('Frequency (Hz)');
+    ylabel('Power');
+    title('Power Spectrum Before Mel-Wrapping');
+    grid on;
+end
 % Obtain mel spectrum
-mel_spectrum = m * abs(fft_output(1:n2, :)).^2;
+mel_spectrum = m * abs(fft_output(1:n2,:)).^2;
 
-% Plotting first frame's power spectrum after mel-wrapping
-figure;
-plot(1:K, mel_spectrum(:, 1));
-xlabel('Index');
-ylabel('Power');
-title('Power Spectrum After Mel-Wrapping');
-grid on;
+if (showFigures)
+    % Plotting first frame's power spectrum after mel-wrapping
+    figure;
+    plot(1:K, mel_spectrum(:, 1));
+    xlabel('Index');
+    ylabel('Power');
+    title('Power Spectrum After Mel-Wrapping');
+    grid on;
+end
 
 % Mel Cepstrum Block
 % Take the log of mel_spectrum as shown in the equation from slides
 log_spectrum = log(mel_spectrum);
 
 % Take DCT of previous result as shown in slides
-mfcc = dct(log_spectrum);
+k=1:K;
+for n=0:K-1
+    Output(n+1,:)=log_spectrum'*cos(n*(k-1/2)*pi/K)';
+end
 
 % Ignore first coefficient as mentioned in slides
-mfcc = mfcc(2:K, :);
+Output = Output(2:K, :);
 
-% Obtain time axis for plotting MFCC
-t_axis_mfcc = (0:size(mfcc, 2)-1) * N / fs;
-
-% Plotting MFCC
-figure;
-imagesc(t_axis_mfcc, 1:size(mfcc, 1), mfcc);
-axis xy;
-colorbar;
-xlabel('Time (s)');
-ylabel('MFCC Coefficients');
-title('MFCC Spectrogram');
+end
