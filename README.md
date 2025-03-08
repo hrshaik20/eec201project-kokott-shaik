@@ -12,11 +12,11 @@ To get started:
 
 To run the MFCC code on one .wav file:  
 Call the function MFCC(filename, N, M, K, showFigures)  
-    filename is the path to the .wav file  
-    N is the size of the frame  
-    M is the distance between frame starts  
-    K is the number of Mel-frequency bins  
-    showFigures is a binary variable that toggles graphs (so that dozens of figures aren't opened when this is included in ProjectTraining1.m)  
+*filename is the path to the .wav file  
+*N is the size of the frame  
+*M is the distance between frame starts  
+*K is the number of Mel-frequency bins  
+*showFigures is a binary variable that toggles graphs (so that dozens of figures aren't opened when this is included in ProjectTraining1.m)  
 The output of the function is a matrix, where each column represents a vector of dimension K-1, whose entries are the MFCC
 
 To run the LBGTraining code on data from one .wav file:
