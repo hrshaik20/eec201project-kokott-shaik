@@ -10,13 +10,13 @@ To get started:
 6. If you would like to see the Vector Quantization codeword plots for all speakers in the training data folder, please change the operator "false" in the LBGTraining function call in line 28 of ProjectTraining1.m to "true." This will set the showFigures parameter in our LBGTraining.m function to true, generating the desired plots. (WARNING: This will generate dozens of figures)
 7. If you would like to see the plots of the speech signals, the mel-spaced filterbank responses, the power spectrum before mel-wrapping, and the power spectrum after mel-wrapping for all speakers in the test data folder as well as the MFCC plot for the test data, please change the operator "false" in the MFCC function call in line 40 of ProjectTraining1.m to "true." This will set the showFigures parameter in our MFCC.m function to true, generating the desired plots. (WARNING: This will generate dozens of figures)
 
-To run the MFCC code on one .wav file:
-Call the function MFCC(filename, N, M, K, showFigures)
-  filename is the path to the .wav file
-  N is the size of the frame
-  M is the distance between frame starts
-  K is the number of Mel-frequency bins
-  showFigures is a binary variable that toggles graphs (so that dozens of figures aren't opened when this is included in ProjectTraining1.m)
+To run the MFCC code on one .wav file:  
+Call the function MFCC(filename, N, M, K, showFigures)  
+  filename is the path to the .wav file  
+  N is the size of the frame  
+  M is the distance between frame starts  
+  K is the number of Mel-frequency bins  
+  showFigures is a binary variable that toggles graphs (so that dozens of figures aren't opened when this is included in ProjectTraining1.m)  
 The output of the function is a matrix, where each column represents a vector of dimension K-1, whose entries are the MFCC
 
 To run the LBGTraining code on data from one .wav file:
