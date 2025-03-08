@@ -17,7 +17,7 @@ Call the function MFCC(filename, N, M, K, showFigures)
   M is the distance between frame starts
   K is the number of Mel-frequency bins
   showFigures is a binary variable that toggles graphs (so that hundreds of figures aren't opened when this is included in ProjectTraining1.m)
-The output of the function is a matrix, where each column represents a vector of dimension K-1, whose entries are the MFCC
+The output of the function is a matrix, where each column represents a vector of dimension K-1, whose entries are the MFCC.
 
 To run the LBGTraining code on data from one .wav file:
 Call the function LBGTraining(inputs, Iterations, e, E, dim1, dim2, showFigures)
@@ -28,4 +28,4 @@ Call the function LBGTraining(inputs, Iterations, e, E, dim1, dim2, showFigures)
   dim1 is the first dimension the vectors are plotted with
   dim2 is the second dimension the vectors are plotted with
   showFigures is a binary variable that toggles graphs (so that dozens of figures aren't opened when this is included in ProjectTraining1.m)
-The output of the function is a matrix, where each column represents a vector of dimension K-1. Each of these vectors is one of the codewords for this .wav file
+The output of the function is a matrix, where each column represents a vector of dimension K-1. Each of these vectors is one of the codewords for this .wav file.
