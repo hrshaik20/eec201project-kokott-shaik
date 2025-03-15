@@ -37,4 +37,5 @@ Call the function LBGTraining(inputs, Iterations, e, E, dim1, dim2, showFigures)
 The output of the LBGTraining function is a matrix, where each column represents a vector of dimension K-1. Each of these vectors is one of the codewords for this .wav file
 
 Brief Discussion of Results:
-When running ProjectTraining1.m on the original, default Training_Data and Test_Data, our model was successfully able to identify all 8 of the speakers in the Test_Data folder. Thus, for the default dataset, our model was 100% accurate.
+
+When running ProjectTraining1.m on the original, default Training_Data and Test_Data, our model was successfully able to identify all 8 of the speakers in the Test_Data folder. **Thus, for the default dataset, our model was 100% accurate.**
