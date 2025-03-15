@@ -1,6 +1,8 @@
 # EEC 201 Final Project - Kokott and Shaik
 Hello! Welcome to our final project repository!
 
+(This README describes how to run our project code and briefly describes our project results at the very end. For a more in-depth discussion of our approaches, tests, results, and efforts in this project, please see the file in this repository entitled "EEC 201 Final Project Report - Kokott and Shaik.pdf.")
+
 To get started:
 1. Please download all of the .m files in this repository along with the Test_Data and Training_Data folders.
 2. Please ensure that all of the .m files as well as the Test_Data and Training_Data folders are all in one directory on your machine.
@@ -33,3 +35,6 @@ Call the function LBGTraining(inputs, Iterations, e, E, dim1, dim2, showFigures)
 7. showFigures is a binary variable that toggles graphs (so that dozens of figures aren't opened when this is included in ProjectTraining1.m)
 
 The output of the LBGTraining function is a matrix, where each column represents a vector of dimension K-1. Each of these vectors is one of the codewords for this .wav file
+
+Brief Discussion of Results:
+When running ProjectTraining1.m on the original, default Training_Data and Test_Data, our model was successfully able to identify all 8 of the speakers in the Test_Data folder. Thus, for the default dataset, our model was 100% accurate.
