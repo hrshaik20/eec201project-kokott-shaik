@@ -8,9 +8,17 @@ To get started:
 2. Please ensure that all of the .m files as well as the data folders are all in one directory on your machine.
 3. Please open the ProjectTraining1.m file in MATLAB.
 4. Run this file in order to train the model on the speakers in the Training_Data folder and to test the model's ability to recognize the speakers in the Test_data folder.
-6. If you would like to see the plots of the speech signals, the mel-spaced filterbank responses, the power spectrum before mel-wrapping, and the power spectrum after mel-wrapping for all speakers in the training data folder as well as the MFCC plot for the training data, please change the operator "false" in the MFCC function call in line 27 of ProjectTrainingX.m to "true." This will set the showFigures parameter in our MFCC.m function to true, generating the desired plots. (WARNING: This will generate dozens of figures)
-7. If you would like to see the Vector Quantization codeword plots for all speakers in the training data folder, please change the operator "false" in the LBGTraining function call in line 29 of ProjectTrainingX.m to "true." This will set the showFigures parameter in our LBGTraining.m function to true, generating the desired plots. (WARNING: This will generate dozens of figures)
-8. If you would like to see the plots of the speech signals, the mel-spaced filterbank responses, the power spectrum before mel-wrapping, and the power spectrum after mel-wrapping for all speakers in the test data folder as well as the MFCC plot for the test data, please change the operator "false" in the MFCC function call in line 41 of ProjectTrainingX.m to "true." This will set the showFigures parameter in our MFCC.m function to true, generating the desired plots. (WARNING: This will generate dozens of figures)
+5. Please open the ProjectTraining2.m file in MATLAB.
+6. Run this file in order to train the model on the speakers in the Twelve-Training folder and to test the model's ability to recognize the speakers in the Twelve-Testing folder.
+7. Please open the ProjectTraining3.m file in MATLAB.
+8. Run this file in order to train the model on the speakers in the Zero-Training folder and to test the model's ability to recognize the speakers in the Zero-Testing folder.
+9. Please open the ProjectTraining4.m file in MATLAB.
+10. Run this file in order to train the model on the speakers in the Eleven Training folder and to test the model's ability to recognize the speakers in the Eleven Test folder.
+11. Please open the ProjectTraining5.m file in MATLAB.
+12. Run this file in order to train the model on the speakers in the Five Training folder and to test the model's ability to recognize the speakers in the Five Test folder.
+13. If you would like to see the plots of the speech signals, the mel-spaced filterbank responses, the power spectrum before mel-wrapping, and the power spectrum after mel-wrapping for all speakers in the training data folder as well as the MFCC plot for the training data, please change the operator "false" in the MFCC function call in line 27 of ProjectTrainingX.m to "true." This will set the showFigures parameter in our MFCC.m function to true, generating the desired plots. (WARNING: This will generate dozens of figures)
+14. If you would like to see the Vector Quantization codeword plots for all speakers in the training data folder, please change the operator "false" in the LBGTraining function call in line 29 of ProjectTrainingX.m to "true." This will set the showFigures parameter in our LBGTraining.m function to true, generating the desired plots. (WARNING: This will generate dozens of figures)
+15. If you would like to see the plots of the speech signals, the mel-spaced filterbank responses, the power spectrum before mel-wrapping, and the power spectrum after mel-wrapping for all speakers in the test data folder as well as the MFCC plot for the test data, please change the operator "false" in the MFCC function call in line 41 of ProjectTrainingX.m to "true." This will set the showFigures parameter in our MFCC.m function to true, generating the desired plots. (WARNING: This will generate dozens of figures)
 
 
 To run the MFCC code on one .wav file:  
@@ -38,4 +46,12 @@ The output of the LBGTraining function is a matrix, where each column represents
 
 Brief Discussion of Results:
 
-When running ProjectTraining1.m on the original, default Training_Data and Test_Data, our model was successfully able to identify all 8 of the speakers in the Test_Data folder. **Thus, for the default dataset, our model was 100% accurate.**
+When running ProjectTraining1.m on the original, default Training_Data and Test_Data folders, our model was successfully able to identify all 8 of the speakers in the Test_Data folder. **Thus, for the default dataset, our model was 100% accurate.**
+
+When running ProjectTraining2.m on the Twelve-Training and Twelve-Testing folders, our model was succesfully able to identify all 18 of the speakers in the Twelve-Testing folder. **Thus, for the twelve dataset, our model was 100% accurate.**
+
+When running ProjectTraining3.m on the Zero-Training and Zero-Testing folders, our model was successfully able to identify all but 1 of the speakers in the Zero-Testing folder, i.e., 17 of the 18 speakers. **Thus, for the zero dataset, our model was about 94% accurate.**
+
+When running ProjectTraining4.m on the Eleven Training and Eleven Test folders, our model was successfully able to identify all 23 speakers in the Eleven Test folder. **Thus, for the eleven dataset, our model was 100% accurate.**
+
+When running ProjectTraining5.m on the Five Training and Five Test folders, our model was successfully able to identify all 23 speakers in the Five Test folder. **Thus, for the five dataset, our model was 100% accurate.**
