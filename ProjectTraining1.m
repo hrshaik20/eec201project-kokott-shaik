@@ -41,8 +41,6 @@ for i=1:length(I2)
     data2{index}=MFCC(I2(i).folder+"\"+I2(i).name,N,M,K,false);
     % Compare minimum distortions from each codebook
     for n=1:length(Codewords)
-        %disp(size(Codewords{n}));
-        disp(size(data2{index}));
         Distances{index,n}=disteu(Codewords{n},data2{index});
         Distortion(n)=sum(min(Distances{index,n},[],1));
     end
