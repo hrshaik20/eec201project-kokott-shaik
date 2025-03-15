@@ -29,7 +29,7 @@ if (showFigures)
     title('Mel-Spaced Filterbank Responses');
     grid on;
 
-    % Plotting first frame's power spectrum before mel-wrapping
+    % Plotting power spectrum before mel-wrapping
     figure;
     plot(freqs(1:n2), abs(fft_output(1:n2, 1)).^2);
     xlabel('Frequency (Hz)');
@@ -41,7 +41,7 @@ end
 mel_spectrum = m * abs(fft_output(1:n2,:)).^2;
 
 if (showFigures)
-    % Plotting first frame's power spectrum after mel-wrapping
+    % Plotting power spectrum after mel-wrapping
     figure;
     plot(1:K, mel_spectrum(:, 1));
     xlabel('Index');
