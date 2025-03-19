@@ -20,13 +20,15 @@ function notchFilterData(inputDir, outputDir, notchF, notchQuality)
         W0 = notchF / (Fs/2);
 
         % Design the notch filter
-        notchfilter = designNotchPeakIIR('notch', 'Frequency', notchF, 'SampleRate', Fs, 'Q', notchQuality);
+        [B, A] = designNotchPeakIIR('Response', 'notch', ...
+            'CenterFrequency', W0, ...
+            'QualityFactor', notchQuality);
 
         % Apply the filter to the audio file
-        xFiltered = filter(notchfilter, x);
+        xFiltered = filter(B, A, x);
 
         % Obtain the file path for the filtered audio file
-        filepath = fullfile(OutputDir, I3(i).name);
+        filepath = fullfile(outputDir, I3(i).name);
 
         % Save the filtered audio file
         audiowrite(filepath, xFiltered, Fs);
