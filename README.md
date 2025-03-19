@@ -3,6 +3,8 @@ Hello! Welcome to our final project repository!
 
 (This README describes how to run our project code and briefly describes our project results at the very end. For a more in-depth discussion of our approaches, tests, results, and efforts in this project, please see the file in this repository entitled "EEC 201 Final Project Report - Kokott and Shaik.pdf.")
 
+For our final project video, please download the EEC 201 Final Project Video.mp4 file from this repository.
+
 To get started:
 1. Please download all of the .m files in this repository along with all of the folders as these folders contain the training and testing datasets.
 2. Please ensure that all of the .m files as well as the data folders are all in one directory on your machine.
