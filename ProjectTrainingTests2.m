@@ -10,35 +10,31 @@ N=512;
 M=200;
 % MFCC bins produced. 20 is sufficient for the 11/8 speakers in the
 % training/testing datasets.
-K=20;
+K=30;
 % How many codewords to generate in the LBG algorithm, 2^NumIterations. 3
 % is sufficient with the other settings for the 11/8 speakers in the
 % training/testing datasets.
-NumIterations=3;
+NumIterations=5;
 % For each training data file:
 for i=1:length(I)
-    % Make sure the index we assign each speaker to is actually the
-    % speaker's index, since "I" may return s1, s10, s11, s2... instead of
-    % s1, s2, s3, s4...
     % Obtain the MFCC data from the i-th speaker, and store it in
     % their proper index
     data{i}=MFCC(I(i).folder+"\"+I(i).name,N,M,K,false);
     % Using the LBG training algorithm, generate 2^NumIterations codewords
     Codewords{i}.value=LBGTraining(data{i},NumIterations,0.01,0.01,1,2,false);
+    % Record what speaker this codeword belongs to
     Codewords{i}.set="Zero";
     Codewords{i}.ID=erase(I(i).name,[".wav","Zero_train"]);
 end
 I=dir("2024StudentAudioRecording\Twelve-Training\Twelve_train*.wav");
 Temp=length(Codewords);
 for i=1:length(I)
-    % Make sure the index we assign each speaker to is actually the
-    % speaker's index, since "I" may return s1, s10, s11, s2... instead of
-    % s1, s2, s3, s4...
     % Obtain the MFCC data from the i-th speaker, and store it in
     % their proper index
     data{i+Temp}=MFCC(I(i).folder+"\"+I(i).name,N,M,K,false);
     % Using the LBG training algorithm, generate 2^NumIterations codewords
     Codewords{i+Temp}.value=LBGTraining(data{i+Temp},NumIterations,0.01,0.01,1,2,false);
+    % Record what speaker this codeword belongs to
     Codewords{i+Temp}.set="Twelve";
     Codewords{i+Temp}.ID=erase(I(i).name,["Twelve_train",".wav"]);
 end
@@ -65,14 +61,16 @@ for i=1:length(I2)
     % speakerID)
     [MinDist(i),speakerID(i)]=min(Distortion);
 end
-TestResults=Codewords{1}.set+Codewords{1}.ID;
+TestResults=[string(Codewords{speakerID(1)}.set+Codewords{speakerID(1)}.ID)];
 for i=2:length(speakerID)
-    TestResults=TestResults+", "+Codewords{i}.set+Codewords{i}.ID;
+    TestResults=[TestResults, string(Codewords{speakerID(i)}.set+Codewords{speakerID(i)}.ID)];
 end
-Actual=erase(I2(1).name,["_test",".wav"]);
+Actual=[string(erase(I2(1).name,["_test",".wav"]))];
 for i=2:length(I2)
-    Actual=Actual+", "+erase(I2(i).name,["_test",".wav"]);
+    Actual=[Actual, string(erase(I2(i).name,["_test",".wav"]))];
 end
 % Print the results!
-disp(TestResults)
-disp(Actual)
+%disp(TestResults)
+%disp(Actual)
+Accuracy=sum(TestResults==Actual)/length(TestResults);
+disp(Accuracy)
