@@ -64,6 +64,6 @@ When running ProjectTraining5.m on the Five Training and Five Test folders, our 
 
 When running ProjectTraining6.m on the original, default Training_Data and the Filtered_Test_Data folders, our model was successfully able to identify all 18 of the speakers in the Filtered_Test_Data folder. **Thus, for the notch-filtered dataset, our model was 100% accurate.**
 
-When running ProjectTraining7.m on the Twelve-Training, Zero-Training, Twelve-Testing, and Zero-Testing folders, our model correctly identified 35 of the 36 testing audio files as their correct speaker and was able to successfully identify the spoken word for all 36 audio files. **Thus, in terms of identifying the speakers, our model was about 97% accurate here and was 100% accurate in identifying the spoken word.**
+When running ProjectTraining7.m on the Twelve-Training, Zero-Training, Twelve-Testing, and Zero-Testing folders, our model correctly identified 34 of the 36 testing audio files as their correct speaker and was able to successfully identify the spoken word for all 36 audio files. **Thus, in terms of identifying the speakers, our model was about 94% accurate here and was 100% accurate in identifying the spoken word.**
 
 When running ProjectTrainingTests2.m on the 2024StudentAudioRecording folder containing the original Twelve-Training, Zero-Training, Twelve-Testing, and Zero-Testing folders that did not rename the speakers, our model correctly identified 34 of the 36 testing audio files as their correct speaker. **Thus, our model was about 94% accurate for this case.**
